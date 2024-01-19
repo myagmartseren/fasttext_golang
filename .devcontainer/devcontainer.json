@@ -1,0 +1,18 @@
+{
+    "name": "Go CGO Development Container",
+    "image": "golang:1.19-alpine",
+    "build": {
+        "dockerfile": "Dockerfile"  // Optional, if you have a custom Dockerfile
+    },
+    "extensions": [
+        "golang.go"
+    ],
+    "postCreateCommand": "go get -u github.com/xxx/yyy",  // Install any additional dependencies
+    "forwardPorts": [
+    {
+            "containerPort": 8080,  // Expose port 8080 if your application needs it
+            "hostPort": 8080
+        }
+    ],
+    "workspaceMount": "source=.,target=/workspace,type=bind,consistency=cached"
+}
