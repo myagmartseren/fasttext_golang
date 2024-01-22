@@ -1,30 +1,10 @@
 package main
 
 /*
-#cgo CFLAGS: -x c++ -std=c++11 -g
-#cgo CXXFLAGS: -std=c++11 -march=native -g -Wall -I/usr/local/include/fastText
+#cgo CFLAGS: -x c++ -std=c++11
+#cgo CXXFLAGS: -march=native -Wall -I/usr/local/include/fastText
 #cgo LDFLAGS: -L/usr/local/lib -lfasttext
-#include <fasttext/fasttext.h>
-#include <stdlib.h>
-#include <iostream>
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-typedef struct {
-    fasttext::FastText* model;
-} FastTextModel;
-
-extern FastTextModel* fasttext_load_model(const char*);
-extern void fasttext_predict(FastTextModel*, const char*, int, float*); // Changed the return type here
-extern int fasttext_getDimension(FastTextModel*);
-extern void fasttext_getWordVector(FastTextModel*, const char*, float*);
-#ifdef __cplusplus
-}
-#endif
-#include <errno.h>
-// #include <stdio.h>
+#include "fasttext_wrapper.h"
 */
 import "C"
 
