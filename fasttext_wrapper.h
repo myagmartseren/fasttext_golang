@@ -1,25 +1,29 @@
-// fasttext_wrapper.h
+
+#include <stdint.h>
+#include <sys/types.h>
 
 #ifndef FASTTEXT_WRAPPER_H
 #define FASTTEXT_WRAPPER_H
 
-#include <fasttext/fasttext.h>
+// Forward declarations for C-compatible structures
+struct Args;
+struct Vector;
+struct DenseMatrix;
+struct Meter;
+struct FastText;
 
-#ifdef __cplusplus
 extern "C" {
-#endif
 
-typedef struct {
-    fasttext::FastText* model;
-} FastTextModel;
+// Functions to create and destroy instances
+struct Args* createArgs();
+struct Vector* createVector(ssize_t dimension);
+struct DenseMatrix* createDenseMatrix();
+struct Meter* createMeter(bool initializeLabels);
+struct FastText* createFastText();
 
-FastTextModel* fasttext_load_model(const char*);
-void fasttext_predict(FastTextModel*, const char*, int, float*);
-int fasttext_getDimension(FastTextModel*);
-void fasttext_getWordVector(FastTextModel*, const char*, float*);
+const char* fasttextPredict(struct FastText* fasttext, const char* text);
+void* LoadModel(struct FastText* fasttext, const char* path);
 
-#ifdef __cplusplus
 }
-#endif
 
-#endif // FASTTEXT_WRAPPER_H
+#endif
