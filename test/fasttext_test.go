@@ -14,7 +14,10 @@ func TestPrediction(t *testing.T) {
 	ft.LoadModel("./model.bin")
 
 	// Perform prediction
-	result := ft.Predict("Some input text")
+	result, err := ft.Predict("Some input text")
+	if err != nil {
+		t.Fatal(err)
+	}
 
 	// Add your assertion based on the expected result
 	expectedResult := "Expected result"
@@ -23,5 +26,5 @@ func TestPrediction(t *testing.T) {
 	}
 
 	// Destroy resources
-	ft.Destroy()
+	// ft.Destroy()
 }
