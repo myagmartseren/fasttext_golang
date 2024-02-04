@@ -9,8 +9,8 @@ extern "C" {
 
 fasttext_t * fasttext_new();
 void fasttext_delete(void *self);
-static char* fasttext_predict(fasttext_t *self, const char* text);
-void fasttext_load(fasttext_t *self, const char* path);
+const char* fasttext_predict(fasttext_t *self, const char* text);
+void fasttext_load_model(fasttext_t *self, const char* path);
 
 #ifdef __cplusplus
 }
