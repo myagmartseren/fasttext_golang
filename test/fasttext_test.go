@@ -9,8 +9,15 @@ import (
 func TestPrediction(t *testing.T) {
 	ft := fasttext.NewFasttext()
 
-	ft.LoadModel("./model.bin")
+	if err := ft.LoadModel("./model.bin"); err != nil {
+		fmt.Println("error", err)
+		return
+	}
 
-	result := ft.Predict("Some input text")
+	result, err := ft.Predict("Some input text")
+	if err != nil {
+		fmt.Println("error", err)
+		return
+	}
 	fmt.Println("result:", result)
 }
