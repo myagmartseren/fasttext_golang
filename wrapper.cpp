@@ -4,6 +4,11 @@
 #include <stdlib.h>
 #include <fasttext/fasttext.h>
 
+//#region Args class implementation 
+
+//#endregion Args class implementation 
+
+//#region FastText class implementation 
 FastText::FastText() {
     this->f= new fasttext::FastText();
 }
@@ -27,3 +32,4 @@ const char* FastText::predict(const char* text){
     std::string result = resultStream.str();
     return strdup(result.c_str());
 }
+//#endregion FastText class implementation 
