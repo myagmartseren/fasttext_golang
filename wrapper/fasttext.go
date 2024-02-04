@@ -1,9 +1,9 @@
 package fasttext
 
 /*
-#include "wrapper.h"
+#cgo LDFLAGS: -lfasttext -pthread
 #include <stdlib.h>
-#cgo LDFLAGS: -L/path/to/fasttext -lfasttext -pthread
+#include "wrapper.h"
 */
 import "C"
 import (
@@ -19,7 +19,6 @@ type FastText struct {
 func NewFasttext() *FastText {
 	ft := new(FastText)
 	ft.fasttext = C.fasttext_new()
-
 	return ft
 }
 
@@ -39,6 +38,6 @@ func (f *FastText) Predict(text string) string {
 	textC := C.CString(text)
 	defer C.free(unsafe.Pointer(textC))
 
-	result := C.fasttext_predict(f.fasttext, textC)
-	return C.GoString(result)
+	resultC := C.fasttext_predict(f.fasttext, textC)
+	return C.GoString(resultC)
 }

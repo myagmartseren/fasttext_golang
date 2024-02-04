@@ -25,6 +25,5 @@ const char* FastText::predict(const char* text){
     }
 
     std::string result = resultStream.str();
-    const char* resultStr = strdup(result.c_str());
-    return resultStr;
+    return strdup(result.c_str());
 }

@@ -15,6 +15,12 @@ func main() {
 	// Perform prediction
 	result := ft.Predict("Some input text")
 	fmt.Println("result:", result)
+	var input string
+	for {
+		fmt.Print("Input:")
+		fmt.Scan(&input)
+		fmt.Println(ft.Predict(input))
+	}
 
 	// // Add your assertion based on the expected result
 	// expectedResult := "Expected result"
