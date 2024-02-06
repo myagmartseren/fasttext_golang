@@ -1,9 +1,10 @@
 package main
 
 import (
-	fasttext "fasttext"
 	"fmt"
 	"testing"
+
+	fasttext "github.com/myagmartseren/fasttext_golang"
 )
 
 func TestPrediction(t *testing.T) {
