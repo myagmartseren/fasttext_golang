@@ -27,9 +27,9 @@ func NewFasttext() *FastText {
 	return ft
 }
 
-// func (ft *FastText) Delete() {
-// 	C.fasttext_delete(unsafe.Fasttext(ft.fasttext))
-// }
+func (ft *FastText) Close() {
+	C.fasttext_delete(unsafe.Pointer(ft.fasttext))
+}
 
 // LoadModel loads a pre-trained model.
 func (f *FastText) LoadModel(path string) error {
