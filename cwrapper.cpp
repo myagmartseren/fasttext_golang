@@ -27,10 +27,23 @@ void fasttext_delete(void *self){
     free(self);
 }
 
-void fasttext_load_model(fasttext_t *self,  const char* path){
-    self->obj->load_model(path);
+void fasttext_load_model(fasttext_t *self, const char* path) {
+    try {
+        self->obj->load_model(path);
+    } catch (const std::exception& ex) {
+        errno = EIO;  // Example: Set to input/output error
+        perror("fasttext_load_model: ");  // Print error message
+        std::cerr << "Exception: " << ex.what() << std::endl;
+    }
 }
 
 const char* fasttext_predict(fasttext_t *self, const char* text){
-    return self->obj->predict(text);
+    try {
+        return self->obj->predict(text);
+    } catch (const std::exception& ex) {
+        errno = EIO;  // Example: Set to input/output error
+        perror("fasttext_predict: ");  // Print error message
+        std::cerr << "Exception: " << ex.what() << std::endl;
+    }
+    return NULL;
 }

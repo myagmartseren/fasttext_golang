@@ -3,6 +3,7 @@ package fasttext
 /*
 #cgo LDFLAGS: -lfasttext -pthread
 #include <stdlib.h>
+#include <math.h>
 #include "wrapper.h"
 */
 import "C"
@@ -27,17 +28,21 @@ func NewFasttext() *FastText {
 // }
 
 // LoadModel loads a pre-trained model.
-func (f *FastText) LoadModel(path string) {
-	modelPathC := C.CString(path)
-	defer C.free(unsafe.Pointer(modelPathC))
+func (f *FastText) LoadModel(path string) error {
+	pathC := C.CString(path)
+	defer C.free(unsafe.Pointer(pathC))
 
-	C.fasttext_load_model(f.fasttext, modelPathC)
+	_, err := C.fasttext_load_model(f.fasttext, pathC)
+	return err
 }
 
-func (f *FastText) Predict(text string) string {
+func (f *FastText) Predict(text string) (string, error) {
 	textC := C.CString(text)
 	defer C.free(unsafe.Pointer(textC))
 
-	resultC := C.fasttext_predict(f.fasttext, textC)
-	return C.GoString(resultC)
+	resultC, err := C.fasttext_predict(f.fasttext, textC)
+	if err != nil {
+		return "", err
+	}
+	return C.GoString(resultC), nil
 }
