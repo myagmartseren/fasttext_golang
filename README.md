@@ -1,6 +1,7 @@
 # FastText Golang Package
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/yourusername/yourpackagename)](https://goreportcard.com/report/github.com/yourusername/yourpackagename)
+[![Go Reference](https://pkg.go.dev/badge/github.com/myagmartseren/fasttext_golang.svg)](https://pkg.go.dev/github.com/myagmartseren/fasttext_golang)
+[![Go Report Card](https://goreportcard.com/badge/github.com/myagmartseren/fasttext_golang)](https://goreportcard.com/report/github.com/myagmartseren/fasttext_golang)
 
 ## Overview
 
