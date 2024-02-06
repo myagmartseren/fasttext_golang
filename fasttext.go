@@ -11,6 +11,12 @@ import (
 	"unsafe"
 )
 
+func init() {
+	if !isLibfasttextInstalled() {
+		installLibfasttext()
+	}
+}
+
 // FastText is a wrapper for the FastText C++ library.
 type FastText struct {
 	fasttext *C.fasttext_t
