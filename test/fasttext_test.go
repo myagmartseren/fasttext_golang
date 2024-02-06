@@ -14,6 +14,7 @@ func TestPrediction(t *testing.T) {
 		fmt.Println("error", err)
 		return
 	}
+	defer ft.Close()
 
 	result, err := ft.Predict("Last weekend, I played DiceCTF 2024 Quals with my team, Blue Water. We got first place. Huge thanks to my incredible teammates, and to  @dicegangctf for the nice CTF and challenges.")
 	if err != nil {
