@@ -12,9 +12,7 @@ import (
 )
 
 func init() {
-	if !isLibfasttextInstalled() {
-		installLibfasttext()
-	}
+
 }
 
 // FastText is a wrapper for the FastText C++ library.
